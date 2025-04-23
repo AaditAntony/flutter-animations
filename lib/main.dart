@@ -30,13 +30,23 @@ class _AnimatedFabState extends State<AnimatedFab> {
   @override
   Widget build(BuildContext context) {
     return OpenContainer(
+      transitionDuration: Duration(seconds: 1),
+      transitionType: ContainerTransitionType.fadeThrough,
+      openColor: Colors.white,
+      closedColor: Colors.white,
+      middleColor: Colors.purpleAccent,
       closedBuilder:
           (_, openContainer) => FloatingActionButton(
+            backgroundColor: Colors.purple,
+
             onPressed: () {
               openContainer(); // Open the container
               setState(() => _isOpen = true); // Update state
             },
-            child: Icon(_isOpen ? Icons.send : Icons.email),
+            child: Icon(
+              _isOpen ? Icons.send : Icons.email,
+              color: Colors.white,
+            ),
           ),
       openBuilder: (_, __) {
         // Reset state when closed
